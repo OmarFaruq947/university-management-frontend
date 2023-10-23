@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&family=Roboto+Condensed:ital,wght@0,100;0,200;0,400;0,500;0,700;1,300&display=swap");
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 /* Scroll bar CSS style section start*/
