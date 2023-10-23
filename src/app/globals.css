@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Scroll bar CSS style section start*/
+
+/* fixed part */
+::-webkit-scrollbar {
+  background-color: #eee;
+  height: 9px;
+  border: 1px solid #fff;
+  width: 10px;
+}
+
+/* moving part */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #001529;
+  border: 1px solid #eee;
+  background-clip: padding-box;
+}
+/* Scroll bar CSS style section end*/
