@@ -1,6 +1,8 @@
 "use client";
 import FormInput from "@/components/Forms/FormInput";
 import Form from "@/components/Forms/Forms";
+import { useUserLoginMutation } from "@/redux/api/authApi";
+import { storeUserInfo } from "@/services/authService";
 import { LoginOutlined } from "@ant-design/icons";
 import { Button, Col, Row } from "antd";
 import Image from "next/image";
@@ -11,9 +13,11 @@ type FormValues = {
   password: string;
 };
 const LoginPage = () => {
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const [userLogin] = useUserLoginMutation();
+  const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
     try {
-      console.log(data);
+      const res = await userLogin({ ...data }).unwrap();
+      storeUserInfo({ accessToken: res?.data?.accessToken });
     } catch (error) {
       console.log(error);
     }
