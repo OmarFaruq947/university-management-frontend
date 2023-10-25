@@ -4,10 +4,10 @@ import { getFromLocalStorage, setToLocalStorage } from "@/utils/local-storage";
 
 export const storeUserInfo = ({ accessToken }: { accessToken: string }) => {
   return setToLocalStorage(authKey, accessToken as string);
-}; //ok
+};
 
 export const getUserInfo = () => {
-  const authToken = getFromLocalStorage(authKey); //ok
+  const authToken = getFromLocalStorage(authKey);
 
   if (authToken) {
     const decodedData = decodedToken(authToken);

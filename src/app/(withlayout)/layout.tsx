@@ -9,17 +9,17 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
-  const userLoggedIn = isLoggedIn(); //ok
-  const router = useRouter(); //ok
-  const [isLoading, setIsLoading] = useState<boolean>(false); //ok
+  const userLoggedIn = isLoggedIn();
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!userLoggedIn) router.push("/login"); //ok
+    if (!userLoggedIn) router.push("/login");
 
-    setIsLoading(true); //ok
+    setIsLoading(true);
   }, [userLoggedIn, router]);
 
-  if (!isLoading) return <LoadingPage />; //ok
+  if (!isLoading) return <LoadingPage />;
 
   return (
     <Layout hasSider>

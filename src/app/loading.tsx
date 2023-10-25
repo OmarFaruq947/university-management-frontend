@@ -2,9 +2,9 @@ import LoadingPage from "@/components/ui/LoadingPage";
 
 const Loading = () => {
   return (
-    <div>
+    <>
       <LoadingPage />
-    </div>
+    </>
   );
 };
 

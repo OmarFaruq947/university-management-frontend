@@ -5,8 +5,8 @@ const LoadingPage = () => {
   return (
     <div className="loading">
       <Bars
-        height="80"
-        width="80"
+        height="60"
+        width="60"
         color="#001529"
         ariaLabel="bars-loading"
         wrapperStyle={{}}

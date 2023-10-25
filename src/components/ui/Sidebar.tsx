@@ -10,7 +10,6 @@ const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   // user role
-  // const role = USER_ROLE.SUPER_ADMIN;
   const { role } = getUserInfo() as any;
   console.log("role------>", role);
   return (

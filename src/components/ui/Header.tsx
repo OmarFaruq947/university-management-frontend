@@ -1,12 +1,14 @@
 "use client";
 
 import { authKey } from "@/constrants/storageKey";
-import { removeUserInfo } from "@/services/auth.service";
+import { getUserInfo, removeUserInfo } from "@/services/auth.service";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, Dropdown, Layout, MenuProps, Row, Space } from "antd";
 import { useRouter } from "next/navigation";
 const { Header: AntHeader } = Layout;
 const Header = () => {
+  const { role } = getUserInfo() as any;
+  console.log("sole from header---->", role);
   // navigation
   const router = useRouter();
   // logout function
@@ -18,6 +20,10 @@ const Header = () => {
   const items: MenuProps["items"] = [
     {
       key: "0",
+      label: <Button type="text">Settings</Button>,
+    },
+    {
+      key: "1",
       label: (
         <Button type="text" danger onClick={logOut}>
           Logout
@@ -29,6 +35,7 @@ const Header = () => {
   return (
     <AntHeader style={{ backgroundColor: "#eee" }}>
       <Row justify={"end"} align={"middle"} style={{ height: "100%" }}>
+        <div className="">{role}</div>
         <Dropdown menu={{ items }}>
           <Space wrap size={16}>
             <Avatar size="large" icon={<UserOutlined />} />
