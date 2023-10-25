@@ -1,5 +1,6 @@
 "use client";
 import { Layout } from "antd";
+import Header from "./Header";
 import UMBreadcrumb from "./UMBreadcrumb";
 
 const { Content } = Layout;
@@ -11,10 +12,11 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
       style={{
         minHeight: "100vh",
         color: "black",
-        padding: "1rem",
+        // padding: "1rem",
         backgroundColor: "#eee",
       }}
     >
+      <Header />
       <UMBreadcrumb
         items={[
           {

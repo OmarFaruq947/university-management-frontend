@@ -1,7 +1,7 @@
 "use client";
 
-import { USER_ROLE } from "@/constrants/role";
 import { SidebarItems } from "@/constrants/sidebarItems";
+import { getUserInfo } from "@/services/auth.service";
 import { Layout, Menu } from "antd";
 import { useState } from "react";
 
@@ -10,7 +10,9 @@ const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   // user role
-  const role = USER_ROLE.ADMIN;
+  // const role = USER_ROLE.SUPER_ADMIN;
+  const { role } = getUserInfo() as any;
+  console.log("role------>", role);
   return (
     <Sider
       collapsible
@@ -29,9 +31,10 @@ const Sidebar = () => {
         className="demo-logo-vertical"
         style={{
           color: "wheat",
-          fontSize: "2rem",
+          fontSize: "1.5rem",
           textAlign: "center",
           marginBottom: "1rem",
+          marginTop: "1rem",
         }}
       >
         BAUET
