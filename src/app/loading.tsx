@@ -1,7 +1,9 @@
+import LoadingPage from "@/components/ui/LoadingPage";
+
 const Loading = () => {
   return (
     <div>
-      <h1>Loading.....w8</h1>
+      <LoadingPage />
     </div>
   );
 };

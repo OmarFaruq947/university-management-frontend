@@ -1,6 +1,7 @@
 "use client";
 
 import Contents from "@/components/ui/Contents";
+import LoadingPage from "@/components/ui/LoadingPage";
 import Sidebar from "@/components/ui/Sidebar";
 import { isLoggedIn } from "@/services/auth.service";
 import { Layout } from "antd";
@@ -18,7 +19,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     setIsLoading(true); //ok
   }, [userLoggedIn, router]);
 
-  if (!isLoading) return <p>Loading.....</p>; //ok
+  if (!isLoading) return <LoadingPage />; //ok
 
   return (
     <Layout hasSider>
