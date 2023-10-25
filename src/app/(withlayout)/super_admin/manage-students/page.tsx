@@ -8,7 +8,7 @@ import Link from "next/link";
 const ManageStudentPage = () => {
   const { role } = getUserInfo() as any;
   return (
-    <div>
+    <>
       <UMBreadCrumb
         items={[
           {
@@ -22,7 +22,7 @@ const ManageStudentPage = () => {
       <Link href={"/super_admin/manage-students/create"}>
         <Button>Create student</Button>
       </Link>
-    </div>
+    </>
   );
 };
 

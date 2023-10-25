@@ -1,8 +1,27 @@
+"use client";
+
+import UMBreadCrumb from "@/components/ui/UMBreadcrumb";
+import { getUserInfo } from "@/services/auth.service";
+import { Button } from "antd";
+import Link from "next/link";
 const AdminPage = () => {
+  const { role } = getUserInfo() as any;
   return (
-    <div>
-      <h1>admin.... for super admin </h1>
-    </div>
+    <>
+      <UMBreadCrumb
+        items={[
+          {
+            label: `${role}`,
+            link: `${role}`,
+          },
+        ]}
+      />
+      <hr />
+      <h1>manage-admin</h1>
+      <Link href={"/super_admin/admin/create"}>
+        <Button>Create Admin</Button>
+      </Link>
+    </>
   );
 };
 
