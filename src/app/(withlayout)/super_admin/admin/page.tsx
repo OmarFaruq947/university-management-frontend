@@ -1,26 +1,27 @@
 "use client";
 
-import UMBreadCrumb from "@/components/ui/UMBreadcrumb";
-import { getUserInfo } from "@/services/auth.service";
+import ActionBar from "@/components/ui/ActionBar";
+// import UMBreadCrumb from "@/components/ui/UMBreadcrumb";
 import { Button } from "antd";
 import Link from "next/link";
 const AdminPage = () => {
-  const { role } = getUserInfo() as any;
+  // const { role } = getUserInfo() as any;
   return (
     <>
-      <UMBreadCrumb
+      {/* <UMBreadCrumb
         items={[
           {
             label: `${role}`,
             link: `${role}`,
           },
         ]}
-      />
-      <hr />
-      <h1>manage-admin</h1>
-      <Link href={"/super_admin/admin/create"}>
-        <Button>Create Admin</Button>
-      </Link>
+      /> */}
+
+      <ActionBar title="Admin list">
+        <Link href={"/super_admin/admin/create"}>
+          <Button>Create Admin</Button>
+        </Link>
+      </ActionBar>
     </>
   );
 };
