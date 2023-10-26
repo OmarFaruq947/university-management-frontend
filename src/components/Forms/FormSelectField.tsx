@@ -38,8 +38,8 @@ const FormSelectField = ({
         name={name}
         render={({ field: { value, onChange } }) => (
           <Select
-            defaultValue="Gender"
-            style={{ width: 350 }}
+            defaultValue={defaultValue}
+            style={{ width: "100%" }}
             onChange={onChange}
             options={options}
             value={value}
