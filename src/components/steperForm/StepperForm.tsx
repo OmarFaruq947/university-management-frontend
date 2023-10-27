@@ -1,45 +1,9 @@
 "use client";
-import { Button, Form, message, Steps } from "antd";
-import { useState } from "react";
+import { getFromLocalStorage, setToLocalStorage } from "@/utils/local-storage";
+import { Button, Steps, message } from "antd";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-
-// {
-//   "password": "123456",
-//   "student": {
-//     "name": {
-//       "firstName": "Fahim",
-//       "lastName": "Uddin",
-//       "middleName": "Bhai"
-//     },
-//     "dateOfBirth": "11-01-1999",
-//     "gender": "male",
-//     "bloodGroup": "O+",
-//     "email": "student_111@gmail.com",
-//     "contactNo": "student_222",
-//     "emergencyContactNo": "0560190000",
-//     "presentAddress": "Dhaka",
-//     "permanentAddress": "Dhaka",
-//     "academicFaculty": "d367b21a-a593-40ac-8ee0-cee0dfd0f724",
-//     "academicDepartment": "fb6e91f0-9f20-4131-b9a9-eb2fad77526c",
-//     "academicSemester": "000a766f-5e9a-4c46-9e5f-81f3f8a27abc",
-//     "guardian": {
-//       "fatherName": "MD. Akkas Ali",
-//       "fatherOccupation": "Businessman",
-//       "fatherContactNo": "0160099000",
-//       "motherName": "Mrs. Anjumanara Begum",
-//       "motherOccupation": "Housewife",
-//       "motherContactNo": "0160680000",
-//       "address": "Dhaka"
-//     },
-//     "localGuardian": {
-//       "name": "Zahid Hasan",
-//       "occupation": "Service Holder",
-//       "contactNo": "01600900000",
-//       "address": "Dhaka"
-//     },
-//     "profileImage": "image linkk"
-//   }
-// }
 
 interface ISteps {
   title?: string;
@@ -47,11 +11,25 @@ interface ISteps {
 }
 
 interface IStepsProps {
-  steps?: ISteps[];
+  steps: ISteps[];
+  submitHandler: (el: any) => void; // concept not clear way arrow function and way void
+  navigateLink?: string;
 }
 
-const StepperForm = ({ steps }: IStepsProps) => {
-  const [current, setCurrent] = useState(0);
+// from data maintain in local storage (start)
+const StepperForm = ({ steps, submitHandler, navigateLink }: IStepsProps) => {
+  const route = useRouter();
+  const [current, setCurrent] = useState<number>(
+    !!getFromLocalStorage("step")
+      ? Number(JSON.parse(getFromLocalStorage("step") as string).step)
+      : 0
+  );
+
+  useEffect(() => {
+    setToLocalStorage("step", JSON.stringify({ step: current }));
+  }, [current]);
+
+  // from data maintain in local storage (start)
 
   const next = () => {
     setCurrent(current + 1);
@@ -67,12 +45,22 @@ const StepperForm = ({ steps }: IStepsProps) => {
   }));
 
   const methods = useForm();
+  // console.log("methods....>>", methods);
+  const { handleSubmit, reset } = methods;
+  const handleStudentOnSubmit = (data: any) => {
+    submitHandler(data);
+    reset();
+    setToLocalStorage("step", JSON.stringify({ step: 0 })); // if from submit is done, than zero(0) set to local storage
+    navigateLink && route.push(navigateLink);
+  };
 
   return (
     <>
+      <p className="stepsHeading">Create Student</p>
+
       <Steps current={current} items={items} />
       <FormProvider {...methods}>
-        <Form>
+        <form onSubmit={handleSubmit(handleStudentOnSubmit)}>
           <div>{steps[current].content}</div>
           <div style={{ marginTop: 24 }}>
             {current < steps.length - 1 && (
@@ -83,9 +71,10 @@ const StepperForm = ({ steps }: IStepsProps) => {
             {current === steps.length - 1 && (
               <Button
                 type="primary"
+                htmlType="submit"
                 onClick={() => message.success("Processing complete!")}
               >
-                Done
+                Submit
               </Button>
             )}
             {current > 0 && (
@@ -94,7 +83,7 @@ const StepperForm = ({ steps }: IStepsProps) => {
               </Button>
             )}
           </div>
-        </Form>
+        </form>
       </FormProvider>
     </>
   );

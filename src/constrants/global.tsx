@@ -138,3 +138,80 @@ export const designationOptions = [
     value: "Data_Analyst",
   },
 ];
+
+//Faculty options
+export const facultyOptions = [
+  {
+    label: "College of Arts and Sciences",
+    value: "Arts and Sciences",
+  },
+  {
+    label: "School of Engineering",
+    value: "Engineering",
+  },
+  {
+    label: "Business School",
+    value: "Business",
+  },
+  {
+    label: "School of Medicine",
+    value: "Medicine",
+  },
+  {
+    label: "School of Law",
+    value: "Law",
+  },
+  {
+    label: "School of Education",
+    value: "Education",
+  },
+];
+
+// Academic Department options
+export const academicDepartmentOptions = [
+  {
+    label: "Computer Science",
+    value: "Computer Science",
+  },
+  {
+    label: "History",
+    value: "History",
+  },
+  {
+    label: "Biology",
+    value: "Biology",
+  },
+  {
+    label: "Psychology",
+    value: "Psychology",
+  },
+  {
+    label: "Mathematics",
+    value: "Mathematics",
+  },
+  {
+    label: "Chemistry",
+    value: "Chemistry",
+  },
+];
+
+// Academic semester options
+export const academicSemesterOptions = [
+  {
+    label: "Spring 2023",
+    value: "spring23",
+  },
+  {
+    label: "Summer 2023",
+    value: "summer23",
+  },
+  {
+    label: "Fall 2023",
+    value: "fall23",
+  },
+  {
+    label: "Winter 2023",
+    value: "winter23",
+  },
+  // You can continue adding more semesters as needed
+];

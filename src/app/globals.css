@@ -85,3 +85,12 @@ p {
 }
 
 /* loading css end */
+
+/* steps start */
+.stepsHeading {
+  justify-content: "center";
+  align-items: "center";
+  font-weight: bold;
+  font-size: x-large;
+}
+/* steps end */
