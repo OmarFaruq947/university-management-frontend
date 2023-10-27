@@ -1,24 +1,22 @@
-import React from "react";
-import UMBreadCrumb from "./UMBreadcrumb";
-
 type ActionBarProps = {
   title?: string;
-  children: React.ReactElement | React.ReactNode;
+  children?: React.ReactElement | React.ReactNode;
 };
 
 const ActionBar = ({ title, children }: ActionBarProps) => {
   return (
     <div>
-      <UMBreadCrumb
-        items={[
-          {
-            label: "super_admin",
-            link: "/super_admin",
-          },
-        ]}
-      />
       <h1>{title}</h1>
-      <div style={{ display: "flex" }}>{children}</div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          margin: "10px 0px",
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 };

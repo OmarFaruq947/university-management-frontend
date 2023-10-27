@@ -10,12 +10,17 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
       style={{
         minHeight: "100vh",
         color: "black",
-        paddingLeft: "0.5rem",
-        backgroundColor: "#eee",
       }}
     >
       <Header />
-      {children}
+
+      <div
+        style={{
+          padding: "10px",
+        }}
+      >
+        {children}
+      </div>
     </Content>
   );
 };

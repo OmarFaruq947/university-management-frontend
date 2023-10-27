@@ -1,24 +1,16 @@
-import Image from "next/image";
-import Link from "next/link";
-import notFoundImage from "../assets/404-Error-amico.png";
+import { Button, Row } from "antd";
 
 const NotFoundPage = () => {
   return (
-    <>
-      <div className="wrapper">
-        <div className="landing-page">
-          <div className="">
-            <Image src={notFoundImage} width={200} alt="Not found..." />
-          </div>
-          <h1> 404 Error.</h1>
-          <p> We can't find the page you're looking for.</p>
-
-          <Link className="button" href={"/profile"}>
-            Back to home
-          </Link>
-        </div>
-      </div>
-    </>
+    <Row
+      justify="center"
+      align="middle"
+      style={{
+        height: "100vh",
+      }}
+    >
+      <h1>404!!! Page Not Found!</h1>
+    </Row>
   );
 };
 

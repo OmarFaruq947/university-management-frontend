@@ -1,18 +1,16 @@
-import Login from "@/components/Login/Login";
+import LoginPage from "@/components/Login/Login";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "BAUET / Login",
+  title: "BAUET | Login",
 };
 
-console.log("meta data----->>>>", metadata);
-
-const LoginPage = () => {
+const Login = () => {
   return (
     <>
-      <Login />
+      <LoginPage />
     </>
   );
 };
 
-export default LoginPage;
+export default Login;

@@ -1,22 +1,26 @@
 "use client";
 
-import { SidebarItems } from "@/constrants/sidebarItems";
-import { getUserInfo } from "@/services/auth.service";
 import { Layout, Menu } from "antd";
 import { useState } from "react";
 
-const Sidebar = () => {
-  const { Sider } = Layout;
+import { sidebarItems } from "@/constants/sidebarItems";
+import { getUserInfo } from "@/services/auth.service";
+
+const { Sider } = Layout;
+
+const SideBar = () => {
   const [collapsed, setCollapsed] = useState(false);
 
-  // user role
+  // const role = USER_ROLE.ADMIN;
   const { role } = getUserInfo() as any;
-  console.log("role------>", role);
+  // console.log(role);
+
   return (
     <Sider
       collapsible
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
+      width={280}
       style={{
         overflow: "auto",
         height: "100vh",
@@ -27,13 +31,13 @@ const Sidebar = () => {
       }}
     >
       <div
-        className="demo-logo-vertical"
         style={{
-          color: "wheat",
-          fontSize: "1.5rem",
+          color: "white",
+          fontSize: "2rem",
           textAlign: "center",
-          marginBottom: "1rem",
-          marginTop: "1rem",
+          fontWeight: "bold",
+          marginBottom: ".5rem",
+          padding: "10px 0px",
         }}
       >
         BAUET
@@ -42,10 +46,10 @@ const Sidebar = () => {
         theme="dark"
         defaultSelectedKeys={["1"]}
         mode="inline"
-        items={SidebarItems(role)}
+        items={sidebarItems(role)}
       />
     </Sider>
   );
 };
 
-export default Sidebar;
+export default SideBar;

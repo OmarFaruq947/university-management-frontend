@@ -1,6 +1,6 @@
-import { DatePicker, DatePickerProps } from "antd";
-import dayjs, { Dayjs } from "dayjs";
+import { DatePicker, DatePickerProps, Input } from "antd";
 import { Controller, useFormContext } from "react-hook-form";
+import dayjs, { Dayjs } from "dayjs";
 
 type UMDatePikerProps = {
   onChange?: (valOne: Dayjs | null, valTwo: string) => void;
@@ -32,7 +32,7 @@ const FormDatePicker = ({
         control={control}
         render={({ field }) => (
           <DatePicker
-            defaultValue={dayjs(field.value) || ""}
+            defaultValue={dayjs(field.value) || Date.now()}
             size={size}
             onChange={handleOnChange}
             style={{ width: "100%" }}

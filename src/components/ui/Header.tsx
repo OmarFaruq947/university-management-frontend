@@ -1,45 +1,55 @@
-"use client";
-
-import { authKey } from "@/constrants/storageKey";
-import { getUserInfo, removeUserInfo } from "@/services/auth.service";
-import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, Dropdown, Layout, MenuProps, Row, Space } from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import { getUserInfo, removeUserInfo } from "@/services/auth.service";
+import { authKey } from "@/constants/storageKey";
 import { useRouter } from "next/navigation";
 const { Header: AntHeader } = Layout;
+
 const Header = () => {
-  const { role } = getUserInfo() as any;
-  console.log("sole from header---->", role);
-  // navigation
   const router = useRouter();
-  // logout function
+
   const logOut = () => {
     removeUserInfo(authKey);
     router.push("/login");
   };
-  // logout avatar
+
   const items: MenuProps["items"] = [
     {
       key: "0",
-      label: <Button type="text">Settings</Button>,
-    },
-    {
-      key: "1",
       label: (
-        <Button type="text" danger onClick={logOut}>
+        <Button onClick={logOut} type="text" danger>
           Logout
         </Button>
       ),
     },
   ];
-
+  const { role } = getUserInfo() as any;
   return (
-    <AntHeader style={{ backgroundColor: "#eee" }}>
-      <Row justify={"end"} align={"middle"} style={{ height: "100%" }}>
-        <div className="">{role}</div>
+    <AntHeader
+      style={{
+        background: "#fff",
+      }}
+    >
+      <Row
+        justify="end"
+        align="middle"
+        style={{
+          height: "100%",
+        }}
+      >
+        <p
+          style={{
+            margin: "0px 5px",
+          }}
+        >
+          {role}
+        </p>
         <Dropdown menu={{ items }}>
-          <Space wrap size={16}>
-            <Avatar size="large" icon={<UserOutlined />} />
-          </Space>
+          <a>
+            <Space wrap size={16}>
+              <Avatar size="large" icon={<UserOutlined />} />
+            </Space>
+          </a>
         </Dropdown>
       </Row>
     </AntHeader>
